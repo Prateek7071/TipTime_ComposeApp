@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -82,7 +83,7 @@ fun TipTimeApp() {
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = stringResource(R.string.tip_amount, tiped),
+            text = stringResource(R.string.tip_amount,tiped),
             modifier = Modifier.align(Alignment.CenterHorizontally),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
@@ -127,8 +128,8 @@ fun RoundTheTip(roundUp: Boolean,
     }    
 }
 
-
-private fun calcTip(amount: Double, TipPercentage: Double = 15.0,roundUp: Boolean): String {
+@VisibleForTesting
+internal fun calcTip(amount: Double, TipPercentage: Double = 15.0,roundUp: Boolean): String {
     var tip = TipPercentage / 100 * amount
     if(roundUp)
         tip=kotlin.math.ceil(tip)
