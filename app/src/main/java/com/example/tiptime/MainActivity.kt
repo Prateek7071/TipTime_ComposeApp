@@ -1,20 +1,15 @@
 package com.example.tiptime
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
-import android.widget.NumberPicker.OnValueChangeListener
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
@@ -28,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tiptime.ui.theme.TipTimeTheme
 import java.text.NumberFormat
-import kotlin.jvm.internal.Intrinsics.Kotlin
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TipTimeApp(modifier: Modifier = Modifier) {
+fun TipTimeApp() {
     var roundUp by remember { mutableStateOf(false) }
     val focusManager= LocalFocusManager.current
     var amountInput by remember { mutableStateOf("") }
@@ -106,7 +100,6 @@ fun EditNumberField(
     keyboardActions: KeyboardActions,
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier=Modifier
 ) {
 
     TextField(
